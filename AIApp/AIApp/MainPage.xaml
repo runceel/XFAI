@@ -6,7 +6,11 @@
     xmlns:local="clr-namespace:AIApp">
 
     <StackLayout>
-        <Image x:Name="picture" VerticalOptions="FillAndExpand" />
+        <Image
+            x:Name="picture"
+            Aspect="AspectFill"
+            VerticalOptions="FillAndExpand" />
+        <Label x:Name="output" HorizontalOptions="CenterAndExpand" />
         <StackLayout Orientation="Horizontal">
             <Button
                 Clicked="PickPhotoButton_Clicked"

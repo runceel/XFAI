@@ -56,7 +56,7 @@ namespace AIApp
             using (var s = photo.GetStream())
             {
                 var result = await service.DetectAsync(s);
-                await DisplayAlert("Info", $"It looks like a {result}", "OK");
+                output.Text = $"It looks like a {result}";
             }
         }
     }
