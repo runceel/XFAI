@@ -45,7 +45,19 @@ namespace AIApp
             }
 
             picture.Source = ImageSource.FromFile(photo.Path);
-            // TODO: using AI.
+
+            var service = DependencyService.Get<IPhotoDetector>();
+            if (service == null)
+            {
+                await DisplayAlert("Info", "Not implemented the feature on your device.", "OK");
+                return;
+            }
+
+            using (var s = photo.GetStream())
+            {
+                var result = await service.DetectAsync(s);
+                await DisplayAlert("Info", $"It looks like a {result}", "OK");
+            }
         }
     }
 }
