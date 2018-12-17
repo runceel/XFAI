@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Plugin.Media;
+using Plugin.Media.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,9 +16,36 @@ namespace AIApp
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void TakePhotoButton_Clicked(object sender, EventArgs e)
         {
+            await ProcessPhotoAsync(true);
+        }
 
+        private async void PickPhotoButton_Clicked(object sender, EventArgs e)
+        {
+            await ProcessPhotoAsync(false);
+        }
+
+        private async Task ProcessPhotoAsync(bool useCamera)
+        {
+            await CrossMedia.Current.Initialize();
+            if (useCamera ? !CrossMedia.Current.IsTakePhotoSupported : !CrossMedia.Current.IsPickPhotoSupported)
+            {
+                await DisplayAlert("Info", "Your phone doesn't support photo feature.", "OK");
+                return;
+            }
+
+            var photo = useCamera ? 
+                await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()) : 
+                await CrossMedia.Current.PickPhotoAsync();
+            if (photo == null)
+            {
+                picture.Source = null;
+                return;
+            }
+
+            picture.Source = ImageSource.FromFile(photo.Path);
+            // TODO: using AI.
         }
     }
 }

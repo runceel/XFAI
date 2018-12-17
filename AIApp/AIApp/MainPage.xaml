@@ -7,7 +7,16 @@
 
     <StackLayout>
         <Image x:Name="picture" VerticalOptions="FillAndExpand" />
-        <Button Clicked="Button_Clicked" Text="Take a picture" />
+        <StackLayout Orientation="Horizontal">
+            <Button
+                Clicked="PickPhotoButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="Pick a picture" />
+            <Button
+                Clicked="TakePhotoButton_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="Take a picture" />
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>
