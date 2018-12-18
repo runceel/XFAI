@@ -3,7 +3,10 @@
     x:Class="AIApp.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:AIApp">
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:local="clr-namespace:AIApp"
+    Title="Safe Area"
+    ios:Page.UseSafeArea="True">
 
     <StackLayout>
         <Image
