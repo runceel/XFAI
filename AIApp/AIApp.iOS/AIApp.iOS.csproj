@@ -28,6 +28,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+<MtouchSdkVersion>12.0</MtouchSdkVersion>
+<CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -97,7 +99,6 @@
       <SubType>Designer</SubType>
     </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Resources\FriesOrNotFries.mlmodel" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -159,8 +160,11 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\AIApp\AIApp.csproj">
-      <Project>{D3636E1C-B835-4CC8-8BBC-0E8494216910}</Project>
+      <Project>{D321DA82-A59A-4F33-9953-CA9E0463FB25}</Project>
       <Name>AIApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CoreMLModel Include="Resources\FriesOrNotFries.mlmodel" />
   </ItemGroup>
 </Project>
